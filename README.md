@@ -3,7 +3,6 @@
 
 - [favorite_button](#favoritebutton)
   - [How to use it.](#how-to-use-it)
-  - [The time to send your request](#the-time-to-send-your-request)
   - [parameters](#parameters)
 
 ##  How to use it.
@@ -27,6 +26,7 @@ and you can also define custom effects.
 
 
 ## parameters
+
 | parameter                  | description                                                                           | default                                                                                                                                                                               |
 | -------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | iconSize                       | size of button widget                                                                   | 60.0                                                                                                                                                                                  |
