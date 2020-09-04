@@ -2,7 +2,7 @@
 
 Language: [English](README.md)
 
-favorite_button is a flutter library that allows you to create heart and star shaped favorite featured buttons with animation effects too.
+Favorite Button is a flutter library that allows you to create heart and star shaped favorite featured buttons with animation effects too.
 
 - [favorite_button](#favoritebutton)
   - [How to use it.](#how-to-use-it)
