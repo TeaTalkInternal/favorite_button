@@ -44,21 +44,23 @@ class DemoPage extends StatelessWidget {
       body: Container(
           width: MediaQuery.of(context).size.width,
           child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          FavoriteButton(
-            valueChanged: (_isFavorite) {
-              print('Is Favorite : $_isFavorite');
-            },
-          ),
-          StarButton(
-            valueChanged: (_isStarred) {
-              print('Is Starred : $_isStarred');
-            },
-          )
-        ],
-      )),
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              FavoriteButton(
+                isFavorite: true,
+                valueChanged: (_isFavorite) {
+                  print('Is Favorite : $_isFavorite');
+                },
+              ),
+              StarButton(
+                isStarred: false,
+                valueChanged: (_isStarred) {
+                  print('Is Starred : $_isStarred');
+                },
+              )
+            ],
+          )),
     );
   }
 }

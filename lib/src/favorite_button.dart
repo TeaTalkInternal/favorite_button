@@ -5,15 +5,18 @@ class FavoriteButton extends StatefulWidget {
   FavoriteButton({
     double iconSize,
     Color iconColor,
+    bool isFavorite,
     @required Function valueChanged,
     Key key,
   })  : _iconSize = iconSize ?? 60.0,
-        _iconColor = iconColor ?? Colors.red[700],
+        _iconColor = iconColor ?? Colors.red,
+        _isFavorite = isFavorite ?? false,
         _valueChanged = valueChanged,
         super(key: key);
 
   final double _iconSize;
   final Color _iconColor;
+  final bool _isFavorite;
   final Function _valueChanged;
 
   @override
@@ -34,14 +37,18 @@ class _FavoriteButtonState extends State<FavoriteButton>
   final int _animationTime = 400;
 
   bool _isFavorite = false;
+  bool _isAnimationCompleted = false;
 
   @override
   void initState() {
     super.initState();
 
+    _isFavorite = widget._isFavorite;
     _maxIconSize = (widget._iconSize < 20.0)
         ? 20.0
-        : (widget._iconSize > 100.0) ? 100.0 : widget._iconSize;
+        : (widget._iconSize > 100.0)
+            ? 100.0
+            : widget._iconSize;
     final double _sizeDifference = _maxIconSize * 0.30;
     _minIconSize = _maxIconSize - _sizeDifference;
 
@@ -51,11 +58,19 @@ class _FavoriteButtonState extends State<FavoriteButton>
     );
 
     _curve = CurvedAnimation(curve: Curves.slowMiddle, parent: _controller);
-    _colorAnimation = ColorTween(
+    Animation<Color> _selectedColorAnimation = ColorTween(
+      begin: widget._iconColor,
+      end: Colors.grey[400],
+    ).animate(_curve);
+
+    Animation<Color> _deSelectedColorAnimation = ColorTween(
       begin: Colors.grey[400],
       end: widget._iconColor,
     ).animate(_curve);
 
+    _colorAnimation = (_isFavorite == true)
+        ? _selectedColorAnimation
+        : _deSelectedColorAnimation;
     _sizeAnimation = TweenSequence(
       <TweenSequenceItem<double>>[
         TweenSequenceItem<double>(
@@ -77,10 +92,12 @@ class _FavoriteButtonState extends State<FavoriteButton>
 
     _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        _isFavorite = true;
+        _isAnimationCompleted = true;
+        _isFavorite = !_isFavorite;
         widget._valueChanged(_isFavorite);
       } else if (status == AnimationStatus.dismissed) {
-        _isFavorite = false;
+        _isAnimationCompleted = false;
+        _isFavorite = !_isFavorite;
         widget._valueChanged(_isFavorite);
       }
     });
@@ -100,7 +117,7 @@ class _FavoriteButtonState extends State<FavoriteButton>
         return InkResponse(
           onTap: () {
             setState(() {
-              if (_isFavorite == true) {
+              if (_isAnimationCompleted == true) {
                 _controller.reverse();
               } else {
                 _controller.forward();
@@ -108,7 +125,7 @@ class _FavoriteButtonState extends State<FavoriteButton>
             });
           },
           child: Icon(
-         Icons.favorite,
+            (Icons.favorite),
             color: _colorAnimation.value,
             size: _sizeAnimation.value,
           ),
@@ -117,4 +134,3 @@ class _FavoriteButtonState extends State<FavoriteButton>
     );
   }
 }
-
