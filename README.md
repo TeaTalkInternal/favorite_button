@@ -37,7 +37,6 @@ and you can also define custom effects.
 | iconSize                       | size of button widget                                                                   | 60.0                                                                                                                                                                                  |
 | iconColor          | color of button widget                                            | red for heart and yellow for star button respectively                                                                                                                                                    |
 | valueChanged                | Function that returns boolean value for current state of button                                                                 | This is a required parameter                                                                                                                                                                            |
-|
 | isFavorite or isStarred                | Default state of button                                                                 | This is a optional parameter                                                                                                                                                                            |
                                                                                                                                                                |
 
