@@ -5,3 +5,7 @@
 ## [0.0.2] - TODO: Add release date.
 
 * Added Default Starring or Favoriting feature.
+
+## [0.0.3] - TODO: Add release date.
+
+* Updated Readme.md.
