@@ -5,13 +5,13 @@ class FavoriteButton extends StatefulWidget {
   FavoriteButton({
     double iconSize,
     Color iconColor,
-    Color iconDisableColor,
+    Color iconDisabledColor,
     bool isFavorite,
     @required Function valueChanged,
     Key key,
   })  : _iconSize = iconSize ?? 60.0,
         _iconColor = iconColor ?? Colors.red,
-        _iconDisableColor = iconDisableColor ?? Colors.grey[400],
+        _iconDisabledColor = iconDisabledColor ?? Colors.grey[400],
         _isFavorite = isFavorite ?? false,
         _valueChanged = valueChanged,
         super(key: key);
@@ -20,7 +20,7 @@ class FavoriteButton extends StatefulWidget {
   final Color _iconColor;
   final bool _isFavorite;
   final Function _valueChanged;
-  final Color _iconDisableColor;
+  final Color _iconDisabledColor;
 
   @override
   _FavoriteButtonState createState() => _FavoriteButtonState();
@@ -63,11 +63,11 @@ class _FavoriteButtonState extends State<FavoriteButton>
     _curve = CurvedAnimation(curve: Curves.slowMiddle, parent: _controller);
     Animation<Color> _selectedColorAnimation = ColorTween(
       begin: widget._iconColor,
-      end: widget._iconDisableColor,
+      end: widget._iconDisabledColor,
     ).animate(_curve);
 
     Animation<Color> _deSelectedColorAnimation = ColorTween(
-      begin: widget._iconDisableColor,
+      begin: widget._iconDisabledColor,
       end: widget._iconColor,
     ).animate(_curve);
 
