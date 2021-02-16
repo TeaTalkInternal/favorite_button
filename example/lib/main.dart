@@ -49,12 +49,14 @@ class DemoPage extends StatelessWidget {
             children: [
               FavoriteButton(
                 isFavorite: true,
+                // iconDisabledColor: Colors.white,
                 valueChanged: (_isFavorite) {
                   print('Is Favorite : $_isFavorite');
                 },
               ),
               StarButton(
                 isStarred: false,
+                // iconDisabledColor: Colors.white,
                 valueChanged: (_isStarred) {
                   print('Is Starred : $_isStarred');
                 },
