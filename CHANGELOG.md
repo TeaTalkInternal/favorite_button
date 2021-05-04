@@ -9,3 +9,7 @@
 ## [0.0.3] - TODO: Add release date.
 
 * Updated Readme.md.
+
+## [0.0.4] - TODO: Add release date.
+
+* Migrated to Null safety

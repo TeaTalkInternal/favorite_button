@@ -1,12 +1,12 @@
 name: favorite_button
 description: favorite_button is a flutter library that allows you to create heart and star shaped favorite featured buttons with animation effects too.
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/TeaTalkInternal/favorite_button
 
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
-  flutter: ">=1.17.0 <2.0.0"
+  flutter: ">=1.17.0"
 
 dependencies:
   flutter:
