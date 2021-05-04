@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 
 class StarButton extends StatefulWidget {
   StarButton({
-    double iconSize,
-    Color iconColor,
-    bool isStarred,
-    Color iconDisabledColor,
-    @required Function valueChanged,
-    Key key,
+    double? iconSize,
+    Color? iconColor,
+    bool? isStarred,
+    Color? iconDisabledColor,
+    required Function valueChanged,
+    Key? key,
   })  : _iconSize = iconSize ?? 60.0,
         _iconColor = iconColor ?? Colors.yellow,
         _iconDisabledColor = iconDisabledColor ?? Colors.grey[400],
@@ -20,18 +20,18 @@ class StarButton extends StatefulWidget {
   final Color _iconColor;
   final bool _isStarred;
   final Function _valueChanged;
-  final Color _iconDisabledColor;
+  final Color? _iconDisabledColor;
 
   @override
   _StarButtonState createState() => _StarButtonState();
 }
 
 class _StarButtonState extends State<StarButton> with TickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<Color> _colorAnimation;
-  Animation<double> _sizeAnimation;
+  late AnimationController _controller;
+  late Animation<Color?> _colorAnimation;
+  late Animation<double> _sizeAnimation;
 
-  CurvedAnimation _curve;
+  late CurvedAnimation _curve;
 
   double _maxIconSize = 0.0;
   double _minIconSize = 0.0;
@@ -60,12 +60,12 @@ class _StarButtonState extends State<StarButton> with TickerProviderStateMixin {
     );
 
     _curve = CurvedAnimation(curve: Curves.slowMiddle, parent: _controller);
-    Animation<Color> _selectedColorAnimation = ColorTween(
+    Animation<Color?> _selectedColorAnimation = ColorTween(
       begin: widget._iconColor,
       end: widget._iconDisabledColor,
     ).animate(_curve);
 
-    Animation<Color> _deSelectedColorAnimation = ColorTween(
+    Animation<Color?> _deSelectedColorAnimation = ColorTween(
       begin: widget._iconDisabledColor,
       end: widget._iconColor,
     ).animate(_curve);

@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
 }
 
 class DemoPage extends StatelessWidget {
-  const DemoPage({Key key}) : super(key: key);
+  const DemoPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
